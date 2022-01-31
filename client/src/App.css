@@ -2,20 +2,14 @@
   text-align: center;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+} */
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,15 +18,67 @@
   color: white;
 }
 
-.App-link {
+/* .App-link {
   color: #61dafb;
-}
+} */
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+} */
+
+.complaint-block{
+  background-color: rgb(166, 166, 210);
+  text-align: left;
+  border: solid gray;
+  margin: 10px;
+  padding: 20px;
+  color: black;
+  font-size: 18px;
+}
+
+.login-form {
+  background-color: rgb(166, 166, 210);
+  text-align: center;
+  border: solid gray;
+  margin: 10px;
+  padding: 20px;
+  color: black;
+  font-size: 18px;
+
+}
+.nav-link{
+  color: white;
+}
+
+.delete-btn{
+  margin: 10px;
+}
+
+.about {
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(6px + 2vmin);
+  color: white;
+  text-align: center;
+}
+
+.nav-bar{
+  background-color: rgb(166, 166, 210);
+  color: white;
+}
+
+.navbar {
+  background-color: white;
+  font-weight: 200;
+  text-align: left;
+  border: 15px solid white;
+  margin: 20px;
 }

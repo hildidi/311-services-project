@@ -70,6 +70,38 @@ your project. Here's a list of some [awesome readmes][] for inspiration.
 
 [awesome readmes]: https://github.com/matiassingers/awesome-readme
 
+### My Notes below:
+## Create Tables
+Create a User, Location, Category, and Complaint tables with the following attributes: 
+```console
+$ rails g resource User username email --no-test-framework 
+```
+
+```console
+$ rails g resource Location borough neighborhood zip:integer --no-test-framework 
+```
+
+```console
+$ rails g resource Category category --no-test-framework 
+```
+
+```console
+$ rails g resource Complaint description date_observed:date address user:belongs_to --no-test-framework 
+```
+
+## Associations
+Establish associations:
+
+A ```User``` has many ```Complaints``` and ```Categories```.
+
+```Complaints``` belongs to ```User```.
+
+A ```Location``` has many ```Users```.
+
+
+
+ 
+
 ## Deploying
 
 This application has all the starter code needed to help you deploy your
