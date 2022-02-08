@@ -1,13 +1,13 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;
 } */
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 30vh;
   display: flex;
@@ -16,7 +16,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 /* .App-link {
   color: #61dafb;
@@ -31,34 +31,29 @@
   }
 } */
 
-.complaint-block{
-  background-color: rgb(166, 166, 210);
+/* .complaint-block{
+  background-color: rgba(255,242,0,255);
   text-align: left;
   border: solid gray;
   margin: 10px;
   padding: 20px;
   color: black;
   font-size: 18px;
-}
+} */
 
-.login-form {
-  background-color: rgb(166, 166, 210);
+.complaint-card{
   text-align: center;
-  border: solid gray;
-  margin: 10px;
-  padding: 20px;
-  color: black;
-  font-size: 18px;
-
 }
+
+/* }
 .nav-link{
   color: white;
 }
 
 .delete-btn{
   margin: 10px;
-}
-
+} */
+/* 
 .about {
   padding: 0.5rem 1rem;
   display: flex;
@@ -68,17 +63,17 @@
   font-size: calc(6px + 2vmin);
   color: white;
   text-align: center;
-}
+} */
 
-.nav-bar{
-  background-color: rgb(166, 166, 210);
+/* .navbar-light bg-light{
+  background-color: rgba(255,242,0,255);
   color: white;
-}
+} */
 
-.navbar {
+/* .navbar {
   background-color: white;
   font-weight: 200;
   text-align: left;
-  border: 15px solid white;
+  border: 10px solid white;
   margin: 20px;
-}
+} */

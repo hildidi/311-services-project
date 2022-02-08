@@ -13,7 +13,7 @@ function Logout ({ setUser }) {
     <div>
       <Routes>
         <Route exact path="/" element={<LoginForm setUser={setUser}/>} />
-        <Route exact path="/signup" element={<SignupForm />} />
+        {/* <Route exact path="/signup" element={<SignupForm />} /> */}
       </Routes>
     </div>
 );

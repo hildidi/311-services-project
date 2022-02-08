@@ -40,8 +40,9 @@ function SignupForm ({setUser}) {
 
   return (
     <>
-      <h2>Signup Here!</h2>
+    <div class="container">
       <form onSubmit={handleSubmit} className="complaint-block">
+        <h2>Signup Here!</h2>
         <label htmlFor="username">Username: </label>
         <input
           id="username-signup-input"
@@ -73,10 +74,13 @@ function SignupForm ({setUser}) {
         <br />
         <br />
         <button type="submit">Submit</button>
+        <br/>
+        <br/>
+        <Link to="/login" replace>
+          Have an account already? Log in!
+        </Link>
       </form>
-      {/* <Link to="/" replace>
-        Have an account already? Log in!
-      </Link> */}
+      </div>
     </>
   );
 };

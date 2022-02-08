@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
     skip_before_action :authenticate_user, only: [:create, :show]
  
+    # signup => 'users/ POST
     def create
         user = User.create!(user_params)
-        session[:user_id]=user.id #this logs user in/out
+        session[:user_id]=user.id #logs our user in
         render json: user, status: :created
     end
 

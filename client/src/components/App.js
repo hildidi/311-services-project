@@ -5,14 +5,12 @@ import Login from "./Login.js"
 import Logout from "./Logout.js"
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
+import ModifyComplaintForm from "./ModifyComplaintForm"
 
 import Header from "../layout/Header";
 import NavBar from "./NavBar";
 import ComplaintForm from "./ComplaintForm.js";
 import AllComplaintsList from "./AllComplaintsList";
-import CategoriesList from "./CategoriesList";
-import ComplaintCard from './ComplaintCard';
-import AllComplaintList from './AllComplaintsList';
 
 function App(){
 
@@ -41,20 +39,20 @@ function App(){
     });
     }, []);
 
-  // POST new complaint
-  const createNewComplaint = (complaint) => {
-    fetch('/complaints/new',{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json'
-      },
-      body: JSON.stringify(complaint)
-    })
-    .then(r => r.json())
-    .then(newComplaint => {
-      setComplaints([...newComplaint,complaints])
-    })
-  }
+  const handleUpdateComplaint = (complaintToUpdate) => { 
+    let editComplaintArray = complaints.filter((eachComplaint) => {
+      return eachComplaint.id ==complaintToUpdate
+    })}
+  //   // PATCH new complaint
+  //   setComplaints([editComplaintArray])
+  //     fetch(`/complaints/${complaintToUpdate}`,{ 
+  //       method: "PATCH",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({
+          
+  //       }),
+  //     })
+  // }
 
   // DELETE complaint
     const handleDeleteComplaint = (complaintToDelete) =>{ 
@@ -88,43 +86,27 @@ function App(){
   <>
    <div className="App-header">
     
+    <BrowserRouter>
     <NavBar user={user} setUser={setUser} />
     <Header/>
-    <BrowserRouter>
       <Routes>
         <Route 
-          path="/login"
-          element={user ? 
-            (
-              <Login 
-                setUser={setUser} 
-                user={user} />
-            ):(<>
-              {/* <LoginForm/> */}
-              <Logout 
+          path="/" element={user ? (<Login 
+            setUser={setUser} 
+            user={user} />
+            ):(<> <Logout 
                 setUser={setUser} />
             </>)
         } />
-        <Route path="login" element={<LoginForm/>}/>
-        <Route path="signup" element={<SignupForm/>}/>
+        <Route path="/login" element={<LoginForm/>}/>
+        <Route path="/signup" element={<SignupForm/>}/>
         <Route path="/complaints/new" element={<ComplaintForm/>} />
         <Route path="/complaints" element={<AllComplaintsList complaints={complaints} handleDeleteComplaint={handleDeleteComplaint}/>}/>
+        <Route path="/complaints/:id/edit" element={<ModifyComplaintForm complaints={complaints} handleUpdateComplaint={handleUpdateComplaint}/>}/>
+        
       </Routes>
     </BrowserRouter>
 
-      
-    {/* <Routes>     
-      <Route>
-        {user ? (
-          <Login 
-            setUser={setUser} 
-            user={user} />
-          ):(
-            <Logout 
-              setUser={setUser} />
-            )}
-      </Route>
-    </Routes> */}
 
     </div>
   </>

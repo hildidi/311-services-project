@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import React from "react";
+import { NavLink, Link} from "react-router-dom";
 
 function NavBar ({user, setUser}) {
   function handleLogOut () {
@@ -6,58 +7,52 @@ function NavBar ({user, setUser}) {
       method: "DELETE"})
     .then((r)=>{
       if (r.ok) {
-        console.log('logged out')
         setUser(null)
       }
     })
   }
 
   return (
-    <nav className="navbar">
-      {/* <h2>User</h2> */}
-      
-      <a href="/login">Login</a> &nbsp;
-      <a className="navbar0" href="/signup">Signup</a> &nbsp;
-      <a href="/complaints/new">Create New Complaint</a> &nbsp;
-      <a href="/complaints/">All Complaints</a> &nbsp;
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark p-4">
+    <a class="navbar-brand text-white h1" href="/"><h1>Welcome to 311</h1></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      {user ? (
-            <button onClick={handleLogOut}>Logout</button>
-            ) : (
-              <>
-            {/* <nav>
-              <NavLink to="signup">Signup</NavLink>
-            </nav>
-              <NavLink to="/login">Login</NavLink> */}
-            </>
-          )}
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="/">Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/complaints/new">New Complaint</a>
+          </li>
           
+          <li class="nav-item">
+          <a class="nav-link text-white" href="/complaints/">My Complaints Report</a>
+          </li>
           
+        </ul>
         
-          
-      
-      {/* <ul class="flex"> */}
-        {/* <div>
-          <NavLink to="/complaints">Complaints</NavLink>
-        </div>
-
-        <div>
-          <NavLink to="/categories">Categories</NavLink>
-        </div>
-
-        <div>
-          {user? (
-          <button onClick={handleLogOut}>Logout</button>
+      <div class="form-inline my-2 my-lg-0">
+        <ul>
+        {user ? (
+          < button class="btn btn-outline-secondary my-2 my-sm-0 text-white" type="submit" onClick={handleLogOut}>Logout</button>
           ) : (
             <>
-              <NavLink to="/signup">Signup</NavLink>
-              <NavLink to="/login">Login</NavLink>
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <a class="btn btn-outline-secondary my-2 my-sm-0 text-white" href="/">Login</a> &nbsp;
+                <a class="btn btn-outline-secondary my-2 my-sm-0 text-white" href="/signup">Signup</a>
+              </ul>
             </>
           )}
-          </div> */}
-
-      {/* </ul> */}
-    </nav>
+        </ul>
+      </div>
+            
+        
+    </div>
+  </nav>
+  
   )
 }
 

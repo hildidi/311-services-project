@@ -5,8 +5,13 @@ class CategoriesController < ApplicationController
         render json: Category.all
     end
 
-    def category
-        Category.find_by(id: params[:id])
+    def show
+        @category = Category.find_by(id:params[:id])
+        if @category
+            params[:category_id]=@category.id
+        else
+            render json: {"error": "AN ERROR!"}
+        end
     end
 
 end

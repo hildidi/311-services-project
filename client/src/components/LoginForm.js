@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 
 const LoginForm = () => {
@@ -38,7 +39,7 @@ const LoginForm = () => {
 
   return (
     
-    <aside className="login-form">
+    <div class="container">
       
       <h2>Log In</h2>
       <form onSubmit={handleSubmit}>
@@ -62,11 +63,15 @@ const LoginForm = () => {
         />
         <br />
         <br />
-        <button id="btn-submit" type="submit">Login</button>
+        <button id="btn-submit" type="submit"
+        onChange={handleChange }>Login</button>
       </form>
       <br />
       <br />
-    </aside>
+      <NavLink to="/signup" replace>
+        Don't have an account? Sign up!
+      </NavLink>
+    </div>
   );
 };
 

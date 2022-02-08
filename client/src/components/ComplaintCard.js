@@ -1,29 +1,59 @@
-import React from "react";
+import React, {useState } from "react";
+import { Link } from "react-router-dom";
+import ModifyComplaintForm from "./ModifyComplaintForm";
+import ModifyComplaint from "./ModifyComplaintModal";
 
-function ComplaintCard ( {complaintsObj, deleteComplaintRequest} ) {
-    console.log('complaintObj ', complaintsObj)
+function ComplaintCard ( {complaintsObj, deleteComplaintRequest, updateComplaint } ) { 
 
+  //
+  // const { title, desc, date_observed } = complaintsObj || {};
+  const [show, setShow] = useState(false);
+
+  const handleOpenClose = () => {
+      setShow(!show);
+  };
+  const handleClose = () => {
+      setShow(false);
+  };
+ 
   return (
-    <div className="complaint-card">
-
-        <p>Title: {complaintsObj.title}</p>
-
-        <div className="complaint-container">
-        <p>Description: </p> 
-        <p>{complaintsObj.desc}</p>
-
-          <p>Date Observed: </p> 
-         <p>{complaintsObj.date_observed}</p> 
-        </div>
-
-        <button className="delete-btn" 
-            onClick={ 
-                () => {deleteComplaintRequest(complaintsObj.id)} }>Delete Complaint</button>
-        <br/>
-
+    <div className="card-m2"
+      //
+      onClick={(e) => {
+        e.stopPropagation();
+    }}
+>
+      
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Title: {complaintsObj.title}</h5>
+            <p class="card-text">{complaintsObj.desc}</p>
+            <p class="card-text">{complaintsObj.date_observed}</p>
+            
+                               
+        <button class="btn btn-secondary"
+            onClick={(e)=> {
+               e.stopPropagation();
+               deleteComplaintRequest(complaintsObj.id)} }>Delete</button>&nbsp;
+        {
+          <a class="btn btn-secondary"
+              onClick={handleOpenClose}
+          >Edit</a>
+        }
+       </div>
     </div>
 
-    
+    {show && (
+                <ModifyComplaintForm
+                    complaintsObj={complaintsObj}
+                    show={show}
+                    handleClose={handleClose}
+                  
+                />
+            )}
+
+
+</div>
   );
 }
 

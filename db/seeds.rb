@@ -24,8 +24,8 @@ categ4 = Category.create(category: "Noise")
 categ5 = Category.create(category: "Dirty Condition")
 
 puts "🌱 Seeding Complaints"
-Complaint.create(user_id: user1.id, category: categ1, title: "content", desc: "broken sidewalk", date_observed: 12/22/2021)
-Complaint.create(user_id: user2.id, category: categ2, title: "content", desc: "building sidewalk with frozen snow", date_observed: 01/03/2022)
-Complaint.create(user_id: user3.id, category: categ3, title: "content", desc: "flooded street", date_observed: 01/22/2022)
+Complaint.create(user_id: user1.id, category: categ1, title: "Broken sidewalk b/c of tree", desc: "Tree roots damaged sidewalk and is now broken.", date_observed: "2021-11-18")
+Complaint.create(user_id: user2.id, category: categ2, title: "Frozen Sidewalk!", desc: "Frozen sidewalk and people are falling down!", date_observed: "2022-01-03")
+Complaint.create(user_id: user3.id, category: categ3, title: "Inaccessible bus stop", desc: "Flooded street. Bus pasengers can't access bus from sidewalk.", date_observed: "2022-01-22")
 
 puts "Done seeding 🌱"

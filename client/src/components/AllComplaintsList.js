@@ -1,13 +1,15 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import ComplaintCard from "./ComplaintCard";
 
 
-function AllComplaintList( { complaints, handleDeleteComplaint } ) { console.log("ALL complaints ", complaints)
+function AllComplaintList( { complaints, handleDeleteComplaint, handleUpdateComplaint } ) { 
+  // console.log("ALL complaints ", complaints)
 
   return (
-    <div className="complaint-block">
+    <div className="container">
         <h2>All Complaints</h2> 
-        <div className="complaint-list">
+        <div className="card-body">
           {complaints.map(
               (eachComplaint) => {
                     return (  
@@ -15,9 +17,11 @@ function AllComplaintList( { complaints, handleDeleteComplaint } ) { console.log
                             key={eachComplaint.id}
                             complaintsObj={eachComplaint}  
                             deleteComplaintRequest={handleDeleteComplaint}
+                            updateComplaint={handleUpdateComplaint}
                         />)
             }  
             )}
+            
           </div>
     </div>   
   );

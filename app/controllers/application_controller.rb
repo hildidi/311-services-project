@@ -20,6 +20,6 @@ class ApplicationController < ActionController::API
   end
 
   def current_user # needs to change once authentication is set up
-      User.find_by_id(session[:user_id]) #this memorizes the user because it makes the call to the DB. 
+      @current_user ||= User.find_by_id(session[:user_id]) # @current_user ||=  memorizes the request because it memorizes the request, omitting the call to the DB. 
   end
 end
