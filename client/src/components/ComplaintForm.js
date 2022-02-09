@@ -38,8 +38,7 @@ const ComplaintForm = ({ complaints }) => { console.log("complaints! ", complain
     }
    
     return (
-
-        <div class='container'>
+        <div class='container'><br></br>
             <h2 id="complaint">Submit a Complaint</h2>
             <div className="form-complaint">
             
@@ -122,6 +121,7 @@ const ComplaintForm = ({ complaints }) => { console.log("complaints! ", complain
             </div>
             <br></br>
             <button 
+                class="btn btn-secondary my-2 my-sm-100 text-white"
                 type="submit" 
                 id="sbt-btn">Submit Complaint</button>
             </form>

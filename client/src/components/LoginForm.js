@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
-
-const LoginForm = () => {
+const LoginForm = ({setUser}) => { 
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
-
+  
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -30,20 +31,22 @@ const LoginForm = () => {
       .then((r) => r.json())
       .then((user) => {
         console.log(user);
+        setUser(user)
         setFormData({
           username: "",
           password: "",
         });
+      navigate("/")
       });
   }
 
   return (
     
-    <div class="container">
-      
+    <div class="container"><br></br>
       <h2>Log In</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username: </label>
+        <br/>
         <input
           id="username-input"
           type="text"
@@ -52,8 +55,8 @@ const LoginForm = () => {
           onChange={handleChange}
         />
         <br />
-        <br />
         <label htmlFor="password">Password: </label>
+        <br/>
         <input
           id="password-input"
           type="password"
@@ -63,14 +66,12 @@ const LoginForm = () => {
         />
         <br />
         <br />
-        <button id="btn-submit" type="submit"
-        onChange={handleChange }>Login</button>
+        <button class="btn btn-secondary" type="submit">Login</button>
       </form>
-      <br />
-      <br />
-      <NavLink to="/signup" replace>
-        Don't have an account? Sign up!
-      </NavLink>
+
+      <Link to="/signup" replace>
+        Sign up
+      </Link>
     </div>
   );
 };

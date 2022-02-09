@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
-  before_action :authenticate_user #runs this function before hitting any of the routes
+  before_action :authenticate_user # before anything else inside of an action runs, it'll invoke this auth_user method before hitting any of the routes.
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 

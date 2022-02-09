@@ -7,10 +7,11 @@ import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import ModifyComplaintForm from "./ModifyComplaintForm"
 
-import Header from "../layout/Header";
 import NavBar from "./NavBar";
+import Header from "../layout/Header";
 import ComplaintForm from "./ComplaintForm.js";
 import AllComplaintsList from "./AllComplaintsList";
+import { useNavigate } from 'react-router';
 
 function App(){
 
@@ -43,18 +44,9 @@ function App(){
     let editComplaintArray = complaints.filter((eachComplaint) => {
       return eachComplaint.id ==complaintToUpdate
     })}
-  //   // PATCH new complaint
-  //   setComplaints([editComplaintArray])
-  //     fetch(`/complaints/${complaintToUpdate}`,{ 
-  //       method: "PATCH",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({
-          
-  //       }),
-  //     })
-  // }
-
+    
   // DELETE complaint
+    
     const handleDeleteComplaint = (complaintToDelete) =>{ 
         let updatedComplaintArray = complaints.filter( (eachComplaint) => {
           return eachComplaint.id !== complaintToDelete
@@ -64,48 +56,36 @@ function App(){
       fetch(`/complaints/${complaintToDelete}`, {
           method: "DELETE",
         });
+        
   }
-
-    // *Come back to it later, session not persisting.*
-    // useEffect(()=> {
-    // fetch("/me")
-    // .then((r) => {
-    // if (r.ok) {
-    //     r.json().then((user) => {
-    //       setUser(user); //set cU to U we get back from endpoin
-          // setAuthenticated(true);
-        // });
-      // } else {
-      //   setAuthenticated(true);
-        // console.log("Bad")
-  //     }
-  //   });
-  // }, []);
 
   return(
   <>
-   <div className="App-header">
-    
+   <div className="head-container">
     <BrowserRouter>
+    
     <NavBar user={user} setUser={setUser} />
     <Header/>
       <Routes>
-        <Route 
-          path="/" element={user ? (<Login 
-            setUser={setUser} 
-            user={user} />
-            ):(<> <Logout 
-                setUser={setUser} />
-            </>)
-        } />
-        <Route path="/login" element={<LoginForm/>}/>
-        <Route path="/signup" element={<SignupForm/>}/>
+        <Route path="/login" element={<LoginForm setUser={setUser}/>}/>
+        <Route path="/signup" element={<SignupForm setUser={setUser}/>}/>
         <Route path="/complaints/new" element={<ComplaintForm/>} />
         <Route path="/complaints" element={<AllComplaintsList complaints={complaints} handleDeleteComplaint={handleDeleteComplaint}/>}/>
         <Route path="/complaints/:id/edit" element={<ModifyComplaintForm complaints={complaints} handleUpdateComplaint={handleUpdateComplaint}/>}/>
-        
+        <Route 
+          path="/" element={user ? 
+            (<Login  
+              setUser={setUser} 
+              user={user} />
+            ):(
+            <> 
+            <Logout
+                setUser={setUser} />
+            </>)
+        } />
       </Routes>
     </BrowserRouter>
+        
 
 
     </div>

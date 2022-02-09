@@ -9,7 +9,7 @@ function ModifyComplaintForm ( {complaintsObj, show, handleClose} ) {
       };
 
       const modalOnOpen = () =>{
-        fetch(`/complaints/`)
+        fetch(`/complaints/${complaintsObj}`)
             .then((res) => res.json())
             .then((complaintsObj) => {
                 if(complaintsObj.category){
@@ -28,7 +28,7 @@ function ModifyComplaintForm ( {complaintsObj, show, handleClose} ) {
         complaintsObj.title = title
         complaintsObj.desc = desc
         complaintsObj.date_observed = date_observed
-        fetch(`/complaints/`, {
+        fetch(`/complaints/${complaintsObj.id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -91,11 +91,11 @@ function ModifyComplaintForm ( {complaintsObj, show, handleClose} ) {
             centered
         >
             <div className="card">
-                <div className="card-header bg-dark text-white ">Update Complaint</div>
-                <div className="card-body">
+                {/* <div className="card-header bg-dark mb-3 text-white"><h4>Update Complaint</h4></div> */}
+                <div className="card-body bg-info">
                     <form>
                         <div className="mb-3">
-                            <label className="form-label">Title</label>
+                            <label className="form-label">Title:</label>
                             <input
                                 name="title" type="title" className="form-control" placeholder="Title"
                                 value={title}
@@ -125,7 +125,7 @@ function ModifyComplaintForm ( {complaintsObj, show, handleClose} ) {
                         </div>
 
                         <div className="mb-3">
-                            <label className="form-label">Description</label>
+                            <label className="form-label">Description:</label>
                             <textarea
                                 name="desc" className="form-control" rows="3" placeholder="desc"
                                 value={desc}
@@ -136,7 +136,7 @@ function ModifyComplaintForm ( {complaintsObj, show, handleClose} ) {
                         </div>
 
                         <div className="mb-3">
-                            <label className="form-label">Date Observed</label>
+                            <label className="form-label">Date Observed:</label>
                             <input
                                 type= "date" className="form-control" placeholder="Title"
                                 value={date_observed}
@@ -158,16 +158,16 @@ function ModifyComplaintForm ( {complaintsObj, show, handleClose} ) {
                             }}>
                             Update
                         </button>
-                        {/* &nbsp;
+                        &nbsp;
                         <button
                             type="button"
-                            className="btn btn-primary mb-3"
+                            className="btn btn-secondary mb-3"
                             onClick={(e) => {
                                 e.stopPropagation();
                                 handleComplaintModifier();
                             }}>
-                            Close
-                        </button> */}
+                            Cancel
+                        </button>
                     </form>
                 </div>
             </div>

@@ -2,14 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import ComplaintCard from "./ComplaintCard";
 
-
 function AllComplaintList( { complaints, handleDeleteComplaint, handleUpdateComplaint } ) { 
-  // console.log("ALL complaints ", complaints)
 
   return (
-    <div className="container">
+    <div className="container"><br></br>
         <h2>All Complaints</h2> 
-        <div className="card-body">
+        <div class="card-body">
           {complaints.map(
               (eachComplaint) => {
                     return (  

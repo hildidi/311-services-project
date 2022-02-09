@@ -1,5 +1,5 @@
 class ComplaintsController < ApplicationController
-    # before_action :set_complaint, only: [:show, :update, :create]
+    # before_action :set_complaint, only: [:show, :update, :destroy]
     # before_action :is_authorized, only: [:show, :update, :destroy]
 
     def index
@@ -7,7 +7,7 @@ class ComplaintsController < ApplicationController
     end
 
     def show 
-        @complaint=Complaint.find_by_id(params[:id])
+        @complaint=Complaint.find_by(id:params[:id])
         if @complaint 
             render json: @complaint
         else 
@@ -37,11 +37,14 @@ class ComplaintsController < ApplicationController
 
 
     def update 
-        @complaint=Complaint.find_by_id(params[:id])
+        @complaint=Complaint.find_by(id:params[:id])
+        # byebug
         if @complaint
+            # byebug
             if @complaint.update(complaint_params)
             render json: @complaint, status: :ok
             else 
+                # byebug
                 render json: {error: @complaint.errors.full_messages}
             end 
         else  
@@ -50,10 +53,10 @@ class ComplaintsController < ApplicationController
     end
 
     def destroy 
-        complaint = Complaint.find_by(id:params[:id])
-        if complaint
+        @complaint =Complaint.find_by(id:params[:id])
+        if @complaint
             # complaint.category.destroy_all
-            complaint.destroy
+           @complaint.destroy
         else
             render json: {"error": "Complaint not found"}, status: :not_found 
         end
@@ -63,8 +66,14 @@ class ComplaintsController < ApplicationController
     private 
 
     def set_complaint 
-        @complaint = Complaint.find_by_id!(params[:id])
+        @complaint = Complaint.find_by(id:params[:id])
     end
+
+    # def is_authorized
+    #     #going to check if user owns the complaints that being modified
+    #     permitted = @complaint.user == current_user
+    #     render json: {error: "Accessibility is not permitted"}, status: :fordbidden unless permitted
+    # end
 
     # strong params > security feature that allows to list what attributes are allowed to be used and saved in the DB.
     def complaint_params 

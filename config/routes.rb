@@ -11,12 +11,9 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#logout"
   post "/signup", to: "users#create"
 
-  # get '/complaints', to: 'complaints#index'
+
   post "/complaints/new", to: "complaints#create"
   patch "/complaints/:id", to: "complaints#update"
-  # get '/complaints/:id', to: 'complaints#show'
-  # delete "/complaints/:id", to: "complaints#destroy"
 
-  # get "categories", to: "categories#index"
   
 end
