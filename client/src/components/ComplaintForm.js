@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from "react";
 
-const ComplaintForm = ({ complaints, setAuthenticated }) => {
+const ComplaintForm = ({ complaints, setComplaints }) => {
     const [titleDetails, updateTitleDetails] = useState("");
     const [descDetails, updateDescDetails] = useState("");
     const [date_observedDetails, updateDate_ObservedDetails] = useState("");
@@ -64,6 +64,7 @@ const ComplaintForm = ({ complaints, setAuthenticated }) => {
                     .then(r=>r.json())
                     .then(console.log)
 
+                    // setComplaints([...complaints, newComplaint ])
                     updateTitleDetails([complaints, newComplaint ])
                     updateDescDetails("")
                     updateDate_ObservedDetails("")
@@ -126,9 +127,7 @@ const ComplaintForm = ({ complaints, setAuthenticated }) => {
                 <br/>
             </form>
             </div>
-        </div>
-                                    
-
+        </div>                           
 
     )
 }

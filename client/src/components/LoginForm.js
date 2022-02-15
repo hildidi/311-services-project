@@ -56,23 +56,25 @@ const LoginForm = ({setUser }) => {
       .then((r) => r.json())
       .then((user) => {
         console.log(user);
-
-      // let loginSuccessful = false 
-      //   if (loginSuccessful) { 
+        
+        // let loginSuccessful = false 
+        //   if (loginSuccessful) { 
         setUser( user); console.log('setuser',setUser)
         setFormData({
           username: "",
           password: "",
         })
-      // } else {
+        navigate("/");
+        
         setError({
           usernameError: "",
           passwordError: ""
         })
-        navigate("/");}
-        // {console.log('unsuccessfulLogin')}
-    // }
-        );
+      // }
+      //  else {
+      //   {console.log('unsuccessfulLogin')}
+      // }
+    });
 
   }
 

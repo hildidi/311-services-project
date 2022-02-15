@@ -1,17 +1,18 @@
 import '../App.css';
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./Login.js"
-import Logout from "./Logout.js"
+import Login from "./Login.js";
+import Logout from "./Logout.js";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
-import ModifyComplaintForm from "./ModifyComplaintForm"
+import ModifyComplaintForm from "./ModifyComplaintForm";
 import AllComplaintsList from "./AllComplaintsList";
 import ComplaintForm from "./ComplaintForm.js";
 
-import NavBar from "./NavBar";
 import Banner from "../layout/Banner";
-import Footer from "../layout/Footer"
+import Header from "../layout/Header";
+import NavBar from "./NavBar";
+import Footer from "../layout/Footer";
 
 function App(){
 
@@ -91,7 +92,7 @@ function App(){
     <>
       <div class="head-container bg-dark">
         <BrowserRouter>
-        
+        <Banner/> 
         <NavBar user={user} setUser={setUser} />
           <Routes>
             <Route path="/login" element={<LoginForm setUser={setUser} />}/>

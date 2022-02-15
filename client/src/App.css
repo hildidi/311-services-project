@@ -2,6 +2,117 @@
 .App {
   text-align: center;
 }
+body{
+  color: #333333;
+}
+
+/* Banner */
+.row.first-visit-alert-row {
+  background-color: #4294CD;
+  -webkit-box-shadow: 0px 3px 10px rgb(130 130 130 / 30%);
+  -moz-box-shadow: 0px 3px 10px rgba(130, 130, 130, 0.3);
+  -ms-box-shadow: 0px 3px 10px rgba(130, 130, 130, 0.3);
+  box-shadow: 0px 3px 10px rgb(130 130 130 / 30%);
+  z-index: 1000;
+  overflow: visible;
+  position: relative;
+  clear: none;
+  float: none;
+}
+.row.first-visit-alert-row a {
+  font-size: 19px;
+  line-height: 20px;
+  color: white;
+  font-weight: 700;
+  text-decoration: solid underline currentColor;
+}
+.module, .module-content, .module-header {
+  position: relative;
+  width: 100%;
+  float: left;
+  margin-right: 1.69492%;
+  display: inline;
+  float: right;
+  margin-right: 0;
+  display: inline;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.module.module-first-visit-alert {
+  display: block;
+  margin: 0px;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 20px;
+  padding: 15px 35px;
+  text-align: center;
+  color: #fff;
+  background-color: #4294CD;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+}
+.module.module-first-visit-alert .alert-icon {
+  display: inline-block;
+  position: relative;
+  left: -10px;
+  top: 4px;
+}
+.module.module-first-visit-alert .alert-icon {
+  display: inline-block;
+  position: relative;
+  left: -10px;
+  top: 4px;
+}
+.alert-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: transparent url(https://www1.nyc.gov//assets/home/images/global/ico-information-white.png) no-repeat 0 0;
+}
+/* Header */
+.header-nyc .header-inner .header-buttons {
+  justify-content: flex-end;
+}
+.header-nyc .header-inner .header-buttons {
+  flex-basis: 25%;
+  flex-grow: 1;
+  display: flex;
+  flex-flow: row nowrap;
+}
+.header-nyc {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* font-size: 16px; */
+  line-height: 20px;
+  /* color: #333333; */
+  background-color: #ffffff;
+}
+.header-nyc .header-inner .logo {
+  flex-basis: auto;
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-nyc .header-inner .slogan {
+  font-size: .92rem;
+  color: #333;
+}
+.header-nyc .header-inner .slogan, .header-nyc .header-inner .header-buttons {
+  flex-basis: 25%;
+  flex-grow: 1;
+  display: flex;
+  flex-flow: row nowrap;
+}
+.header-nyc .header-inner .slogan {
+  font-size: .80rem;
+  color: #333;
+  flex-basis: 25%;
+  flex-grow: 1;
+  display: flex;
+  flex-flow: row nowrap;
+}
 
 /* .App-logo {
   height: 40vmin;
@@ -186,6 +297,24 @@ footer {
   background-color: #000;
   padding: 35px 0 60px 0;
   clear: both;
+}
+#categories-grid {
+  padding: 3rem;
+}
+#categories-grid .card {
+  height: 380px;
+  position: relative;
+  min-width: 0;
+  word-wrap: break-word;
+  word-wrap: initial;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,0.125);
+  border-radius: 0.25rem;
+}
+#categories-grid .card-body {
+  padding: 1.25rem;
+  overflow: hidden;
 }
 footer {
   position: relative;
