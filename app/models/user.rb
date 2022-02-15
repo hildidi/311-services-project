@@ -9,5 +9,5 @@ class User < ApplicationRecord
     validates :username, presence: true, on:[:create]
     validates :email, presence: true
     validates :email, uniqueness: {case_sensitive: false, message: "That email is already associated to another account"}
-    validates :password, presence: true    
+    validates :password, length: {in: 4..20}
 end

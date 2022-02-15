@@ -44,11 +44,6 @@ function ModifyComplaintForm ( {complaintsObj, show, handleClose} ) {
             handleComplaintModifier();
       }
   
-
-  // const [title, updateTitle]= useState("");
-  // const [desc, updateDesc]= useState("");
-  // const [category, setCategory]= useState("");
-  // const [date_observed, updateDate_Observed]= useState("");
   const [allCategories , setAllCategories] = useState([]);
 
   useEffect( ()=> {   
@@ -62,27 +57,27 @@ function ModifyComplaintForm ( {complaintsObj, show, handleClose} ) {
   }, []);
 
 
-  function renderCatDropDown (){
-      return (
-          <>
-           <select onChange={
-                  (se) => {
-                      // console.log("se...", se.target)}}>
-                      setCategory(se.target.value)}}>
-                      <option option value={0} > Category </option>                         
+//   function renderCatDropDown (){
+//       return (
+//           <>
+//            <select onChange={
+//                   (se) => {
+//                       // console.log("se...", se.target)}}>
+//                       setCategory(se.target.value)}}>
+//                       <option option value={0} > Category </option>                         
                       
-                      {allCategories.map(
-                          eachCategory =>{
-                      return (
-                          <option value={eachCategory.category} > {eachCategory.category}</option>)
-                      })}    
-          </select>
-          </>
-      )
-  }
+//                       {allCategories.map(
+//                           eachCategory =>{
+//                       return (
+//                           <option value={eachCategory.category} > {eachCategory.category}</option>)
+//                       })}    
+//           </select>
+//           </>
+//       )
+//   }
     
     return (
-      <div
+      <div 
             show={show}
             // onHide={handleComplaintModifier}
             onShow={modalOnOpen}
@@ -90,12 +85,12 @@ function ModifyComplaintForm ( {complaintsObj, show, handleClose} ) {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <div className="card">
+            <div className="card bg-warning mb-3">
                 {/* <div className="card-header bg-dark mb-3 text-white"><h4>Update Complaint</h4></div> */}
-                <div className="card-body bg-info">
+                <div className="card-body bg-header">
                     <form>
                         <div className="mb-3">
-                            <label className="form-label">Title:</label>
+                            <label className="form-label" style={{fontWeight: 'bold'}}>Title</label>
                             <input
                                 name="title" type="title" className="form-control" placeholder="Title"
                                 value={title}
@@ -125,7 +120,7 @@ function ModifyComplaintForm ( {complaintsObj, show, handleClose} ) {
                         </div>
 
                         <div className="mb-3">
-                            <label className="form-label">Description:</label>
+                            <label className="form-label" style={{fontWeight: 'bold'}}>Description</label>
                             <textarea
                                 name="desc" className="form-control" rows="3" placeholder="desc"
                                 value={desc}
@@ -136,7 +131,7 @@ function ModifyComplaintForm ( {complaintsObj, show, handleClose} ) {
                         </div>
 
                         <div className="mb-3">
-                            <label className="form-label">Date Observed:</label>
+                            <label className="form-label" style={{fontWeight: 'bold'}}>Date Observed</label>
                             <input
                                 type= "date" className="form-control" placeholder="Title"
                                 value={date_observed}

@@ -11,7 +11,7 @@ function Logout ({ setUser }) {
  return (
     <div>
       <Routes>
-        <Route exact path="/" element={<LoginForm setUser={setUser}/>} />
+        <Route path="/" element={<LoginForm setUser={setUser}/>} />
       </Routes>
     </div>
 );

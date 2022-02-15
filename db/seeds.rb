@@ -12,9 +12,9 @@ user4 = User.create(username: "Arya", email: "arya@gmail.com", password: "123456
 user5 = User.create(username: "Joe", email: "Joe11@gmail.com", password: "1234567890")
 
 puts "🌱 Seeding Locations"
-loc1 = Location.create(borough: "Queens", neighborhood: "Astoria", zip: 11103)
-loc2 = Location.create(borough: "Brooklyn", neighborhood: "Bushwick", zip: 11237)
-loc3 = Location.create(borough: "Manhattan", neighborhood: "Murray Hill", zip: 10016)
+loc1 = Location.create(address: "content", apartment: "apt-no", borough: "Queens", neighborhood: "Astoria", zip: 11103)
+loc2 = Location.create(address: "content", apartment: "apt-no", borough: "Brooklyn", neighborhood: "Bushwick", zip: 11237)
+loc3 = Location.create(address: "content", apartment: "apt-no", borough: "Manhattan", neighborhood: "Murray Hill", zip: 10016)
 
 puts "🌱 Seeding Categories"
 categ1 = Category.create(category: "Sidewalk Condition")

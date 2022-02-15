@@ -1,11 +1,7 @@
 import React, {useState } from "react";
-import { Link } from "react-router-dom";
 import ModifyComplaintForm from "./ModifyComplaintForm";
 
-function ComplaintCard ( {complaintsObj, deleteComplaintRequest, updateComplaint } ) { 
-
-  //
-  // const { title, desc, date_observed } = complaintsObj || {};
+function ComplaintCard ( {complaintsObj, deleteComplaintRequest } ) { 
   const [show, setShow] = useState(false);
 
   const handleOpenClose = () => {
@@ -42,7 +38,7 @@ function ComplaintCard ( {complaintsObj, deleteComplaintRequest, updateComplaint
         
        </div>
     </div>
-
+          
     {show && (
       <ModifyComplaintForm
           complaintsObj={complaintsObj}

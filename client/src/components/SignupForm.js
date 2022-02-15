@@ -6,7 +6,10 @@ function SignupForm ({setUser}) {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
-    password: ""
+    password: "",
+    usernameError: "",
+    emailError: "",
+    passwordError: ""
   });
 
   const navigate=useNavigate();
@@ -18,8 +21,37 @@ function SignupForm ({setUser}) {
     });
   };
 
+ 
+  const validate =  () => {
+    let usernameError = "";
+    let emailError = "";
+    let passwordError = "";
+
+    if (!formData.username) {
+      usernameError = "Name cannot be blank.";
+    }
+
+    if (!formData.email.includes('@')){
+      emailError = "Please enter a valid email address."
+    }
+
+    if (formData.password < 4) {
+      passwordError = "Password must be longer than 4 characters.";
+    }
+
+    if (usernameError || emailError || passwordError ) {
+      setFormData({usernameError, emailError, passwordError });
+      return false;
+    }
+
+  }; 
+
   function handleSubmit(e) {
     e.preventDefault();
+   
+     const isValid = validate();
+     if (isValid) {}
+   
 
     const userCredentials = { ...formData };
 
@@ -39,16 +71,19 @@ function SignupForm ({setUser}) {
           email: "",
           password: ""
         });
+
       navigate("/")
-      });
+      
+    });
   }
 
   return (
     <>
-    <div class="container "><br></br>
+    <div class="intro card container"><br></br>
       <form onSubmit={handleSubmit} className="complaint-block">
-        <h2>Signup</h2>
-        <label htmlFor="username">Username: </label>
+        <h2>Sign up form</h2>
+        <p>Fill out the text fields, and then select the Create button.</p>
+        <label htmlFor="username" style={{fontWeight: 'bold'}}>Username: </label>
         <br/>
         <input
           id="username-signup-input"
@@ -57,20 +92,22 @@ function SignupForm ({setUser}) {
           value={formData.username}
           onChange={handleChange}
         />
+        <div style={{fontSize: 12, color: "red"}}>{formData.usernameError}</div>
         
-        <br />
-        <label htmlFor="email">Email: </label>
+        <label htmlFor="email" style={{fontWeight: 'bold'}}>Email: </label>
         <br/>
         <input
           id="email-signup-input"
-          type="text"
+          class="textInput invalid"
+          type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
         />
 
-        <br />
-        <label htmlFor="password">Password: </label>
+         <div style={{fontSize: 12, color: "red"}}>{formData.emailError}</div>
+
+        <label htmlFor="password" style={{fontWeight: 'bold'}}>Password: </label>
         <br/>
         <input
           id="password-signup-input"
@@ -79,16 +116,22 @@ function SignupForm ({setUser}) {
           value={formData.password}
           onChange={handleChange}
         />
+        <div style={{fontSize: 12, color: "red"}}>{formData.passwordError}</div>
         
         <br />
-        <br />
-        <button class="btn btn-secondary" type="submit">Submit</button>     
-        <br/>    
+        <button class="btn btn-secondary" type="submit">Create</button>    
+         
+        <hr class="solid"/>
+      </form>
+
+      <div>
         <Link to="/login" replace>
           Log in
         </Link>
-      </form>
       </div>
+        <br/>
+      </div>
+      
     </>
   );
 };

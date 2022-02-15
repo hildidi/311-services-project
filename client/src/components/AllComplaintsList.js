@@ -1,12 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import ComplaintCard from "./ComplaintCard";
 
 function AllComplaintList( { complaints, handleDeleteComplaint, handleUpdateComplaint } ) { 
 
   return (
     <div className="container"><br></br>
-        <h2>All Complaints</h2> 
+        <h2 class="text-white">All My Reported Complaints</h2> 
         <div class="card-body">
           {complaints.map(
               (eachComplaint) => {

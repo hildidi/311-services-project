@@ -1,13 +1,14 @@
 class ComplaintsController < ApplicationController
-    # before_action :set_complaint, only: [:show, :update, :destroy]
+    before_action :set_complaint#, only: [:show, :update, :destroy]
     # before_action :is_authorized, only: [:show, :update, :destroy]
+    before_action :is_authorized, except: [:index, :create, :display_user_complaints]
 
     def index
         render json: Complaint.all
     end
 
     def show 
-        @complaint=Complaint.find_by(id:params[:id])
+        # @complaint = Complaint.find_by(id:params[:id])
         if @complaint 
             render json: @complaint
         else 
@@ -31,20 +32,15 @@ class ComplaintsController < ApplicationController
             # byebug
             render json: {error: @newComplaint.errors.full_messages}, status: :unprocessable_entity
         end
-        # rescue ActiveRecord::RecordInvalid => invalid 
-        #     render json: {error: invalid.record.errors.full_messages}, status: :unprocessable_entity       
     end
 
 
     def update 
-        @complaint=Complaint.find_by(id:params[:id])
-        # byebug
+        # @complaint = Complaint.find_by(id:params[:id])
         if @complaint
-            # byebug
             if @complaint.update(complaint_params)
             render json: @complaint, status: :ok
             else 
-                # byebug
                 render json: {error: @complaint.errors.full_messages}
             end 
         else  
@@ -53,7 +49,7 @@ class ComplaintsController < ApplicationController
     end
 
     def destroy 
-        @complaint =Complaint.find_by(id:params[:id])
+        # @complaint = Complaint.find_by(id:params[:id])
         if @complaint
             # complaint.category.destroy_all
            @complaint.destroy
@@ -62,18 +58,25 @@ class ComplaintsController < ApplicationController
         end
     end
 
+    def display_user_complaints
+        # byebug
+        @complaint = current_user.complaints
+        render json: @complaint
+    end
 
     private 
 
     def set_complaint 
+        # byebug
         @complaint = Complaint.find_by(id:params[:id])
     end
 
-    # def is_authorized
-    #     #going to check if user owns the complaints that being modified
-    #     permitted = @complaint.user == current_user
-    #     render json: {error: "Accessibility is not permitted"}, status: :fordbidden unless permitted
-    # end
+    def is_authorized
+        #going to check if user owns the complaints that being modified
+        # permitted = @complaint.user == current_user #before adding admin
+        permitted = current_user.admin? || @complaint.user == current_user 
+        render json: {error: "You don't have permission to perform that action"}, status: :forbidden unless permitted
+    end
 
     # strong params > security feature that allows to list what attributes are allowed to be used and saved in the DB.
     def complaint_params 
@@ -82,3 +85,4 @@ class ComplaintsController < ApplicationController
 
 end
 
+ 

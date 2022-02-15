@@ -1,11 +1,11 @@
 import React, {useState, useEffect } from "react";
 
-const ComplaintForm = ({ complaints }) => { console.log("complaints! ", complaints)
-    const [titleDetails, updateTitleDetails] = useState("")
-    const [descDetails, updateDescDetails] = useState("")
-    const [date_observedDetails, updateDate_ObservedDetails] = useState("")
-    const [categoryDetails , setCategoryDetails] = useState("")
-    const [allCategories , setAllCategories] = useState([]);
+const ComplaintForm = ({ complaints, setAuthenticated }) => {
+    const [titleDetails, updateTitleDetails] = useState("");
+    const [descDetails, updateDescDetails] = useState("");
+    const [date_observedDetails, updateDate_ObservedDetails] = useState("");
+    const [categoryDetails , setCategoryDetails] = useState("");
+    const [allCategories , setAllCategories] = useState([]); 
 
     useEffect( ()=> {   
     fetch('/categories')
@@ -38,7 +38,7 @@ const ComplaintForm = ({ complaints }) => { console.log("complaints! ", complain
     }
    
     return (
-        <div class='container'><br></br>
+        <div class='card container'><br></br>
             <h2 id="complaint">Submit a Complaint</h2>
             <div className="form-complaint">
             
@@ -70,7 +70,7 @@ const ComplaintForm = ({ complaints }) => { console.log("complaints! ", complain
                     setCategoryDetails(0)
                     }}>
 
-                <label htmlFor="complaint-title">Title:</label>
+                <label htmlFor="complaint-title" style={{fontWeight: 'bold'}}>Title</label>
                 <input 
                     // type="text" 
                     class="form-control" 
@@ -83,13 +83,13 @@ const ComplaintForm = ({ complaints }) => { console.log("complaints! ", complain
                             value={titleDetails} 
                             placeholder ="Title details"/>
                 <br />
-                <br />
-                <label htmlFor="select-cat">Select Complaint Category:</label>                            
+
+                <label htmlFor="select-cat" style={{fontWeight: 'bold'}}> Select Complaint Category</label> &nbsp;                           
                 {renderCatDropDown ( )}
                 
                 <br />
                 <br />
-                <label htmlFor="formControlTextarea1">Complaint Description:</label>
+                <label htmlFor="formControlTextarea1" style={{fontWeight: 'bold'}}> Describe the Problem</label>
                 <textarea 
                     class="form-control" 
                     id="exampleFormControlTextarea1" 
@@ -100,14 +100,13 @@ const ComplaintForm = ({ complaints }) => { console.log("complaints! ", complain
                             // console.log('synth', se.target.value)
                             updateDescDetails(se.target.value)}}
                             value={descDetails}
-                            placeholder ="Description details"/>
-                    <br />
+                            placeholder = "Description details"/>
                     <br />
 
             <div class="form-group">
-                <label htmlFor="formControlInput1">Complaint Date:</label>
+                <label htmlFor="formControlInput1" style={{fontWeight: 'bold'}}> Date/Time Observed</label>
                 <input 
-                    type="date" 
+                    type="date"
                     class="form-control" 
                     id="exampleFormControlInput1" 
                     onChange={
@@ -124,6 +123,7 @@ const ComplaintForm = ({ complaints }) => { console.log("complaints! ", complain
                 class="btn btn-secondary my-2 my-sm-100 text-white"
                 type="submit" 
                 id="sbt-btn">Submit Complaint</button>
+                <br/>
             </form>
             </div>
         </div>

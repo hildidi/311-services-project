@@ -2,50 +2,86 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 
-const LoginForm = ({setUser}) => { 
+const LoginForm = ({setUser }) => {
+  const [error, setError] = useState ({
+    usernameError: "",
+    passwordError: ""
+  })
+
   const [formData, setFormData] = useState({
     username: "",
-    password: "",
+    password: ""
   });
   
   const navigate = useNavigate();
+  
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
+
+  const validate = () => {
+    let usernameError = "";
+    let passwordError = "";
   
+    if (!error.usernameError) {
+      usernameError = "Name cannot be blank.";
+    }
+
+    if (error.passwordError <4 ){
+      passwordError = "Password must be longer than 4 characters.";
+    }
+
+    if (usernameError || passwordError){
+      setError({usernameError, passwordError});
+      return false; 
+    }
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
+    const isValid = validate();
+    if (isValid) {}
 
-    const userCreds = { ...formData };
+    const userCreds = { ...formData }; console.log('userCreds', userCreds)
 
     fetch("/login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-      },
+        "Content-Type": "application/json" },
       body: JSON.stringify(userCreds),
     })
       .then((r) => r.json())
       .then((user) => {
         console.log(user);
-        setUser(user)
+
+      // let loginSuccessful = false 
+      //   if (loginSuccessful) { 
+        setUser( user); console.log('setuser',setUser)
         setFormData({
           username: "",
           password: "",
-        });
-      navigate("/")
-      });
+        })
+      // } else {
+        setError({
+          usernameError: "",
+          passwordError: ""
+        })
+        navigate("/");}
+        // {console.log('unsuccessfulLogin')}
+    // }
+        );
+
   }
 
   return (
     
-    <div class="container"><br></br>
-      <h2>Log In</h2>
+    <div class="intro card container" role="form"><br></br>
+      <h2>Login with your existing account.</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username: </label>
+        <label style={{fontWeight: 'bold'}} htmlFor="username">Username</label>
         <br/>
         <input
           id="username-input"
@@ -54,8 +90,12 @@ const LoginForm = ({setUser}) => {
           value={formData.username}
           onChange={handleChange}
         />
-        <br />
-        <label htmlFor="password">Password: </label>
+          <div class="error ItemLevel show" 
+            role="alert" 
+            style={{fontSize: 12, color: "red"}}>{error.usernameError}</div>
+
+        
+        <label style={{fontWeight: 'bold'}} htmlFor="password" >Password</label>
         <br/>
         <input
           id="password-input"
@@ -64,14 +104,23 @@ const LoginForm = ({setUser}) => {
           value={formData.password}
           onChange={handleChange}
         />
-        <br />
-        <br />
+          <div 
+            role="alert" 
+            style={{fontSize: 12, color: "red" }}>{error.passwordError}</div>
+
+        <br/>
         <button class="btn btn-secondary" type="submit">Login</button>
       </form>
 
-      <Link to="/signup" replace>
-        Sign up
-      </Link>
+      <hr class="solid"/>
+
+      <div>
+        <Link to="/signup" replace>
+          Sign up now
+        </Link>
+      </div>
+      <br/>
+    
     </div>
   );
 };
