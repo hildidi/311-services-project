@@ -1,19 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 
 const LoginForm = ({setUser }) => {
-  const [error, setError] = useState ({
-    usernameError: "",
-    passwordError: ""
-  })
-
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     password: ""
   });
-  
-  const navigate = useNavigate();
+
+  // const [error, setError] = useState ({
+  //   usernameError: "",
+  //   passwordError: ""
+  // })
   
   const handleChange = (e) => {
     setFormData({
@@ -22,38 +21,37 @@ const LoginForm = ({setUser }) => {
     });
   };
 
-  const validate = () => {
-    let usernameError = "";
-    let passwordError = "";
+  // const validate = () => {
+  //   let usernameError = "";
+  //   let passwordError = "";
   
-    if (!error.usernameError) {
-      usernameError = "Name cannot be blank.";
-    }
+  //   if (!error.usernameError) {
+  //     usernameError = "Name cannot be blank.";
+  //   }
 
-    if (error.passwordError <4 ){
-      passwordError = "Password must be longer than 4 characters.";
-    }
+  //   if (error.passwordError <4 ){
+  //     passwordError = "Password must be longer than 4 characters.";
+  //   }
 
-    if (usernameError || passwordError){
-      setError({usernameError, passwordError});
-      return false; 
-    }
-  }
+  //   if (usernameError || passwordError){
+  //     setError({usernameError, passwordError});
+  //     return false; 
+  //   }
+  // }
 
   function handleSubmit(e) {
     e.preventDefault();
-    const isValid = validate();
-    if (isValid) {}
+    // const isValid = validate();
+    // if (isValid) {}
 
     const userCreds = { ...formData }; console.log('userCreds', userCreds)
-
     fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json" },
       body: JSON.stringify(userCreds),
     })
-      .then((r) => r.json())
+      .then((r) => r.json()) 
       .then((user) => {
         console.log(user);
         
@@ -65,11 +63,10 @@ const LoginForm = ({setUser }) => {
           password: "",
         })
         navigate("/");
-        
-        setError({
-          usernameError: "",
-          passwordError: ""
-        })
+        // setError({
+        //   usernameError: "",
+        //   passwordError: ""
+        // })
       // }
       //  else {
       //   {console.log('unsuccessfulLogin')}
@@ -80,8 +77,8 @@ const LoginForm = ({setUser }) => {
 
   return (
     
-    <div class="intro card container" role="form"><br></br>
-      <h2>Login with your existing account.</h2>
+    <section class="intro card container" role="form"><br></br>
+      <h2>Sign in with your existing account.</h2>
       <form onSubmit={handleSubmit}>
         <label style={{fontWeight: 'bold'}} htmlFor="username">Username</label>
         <br/>
@@ -91,12 +88,13 @@ const LoginForm = ({setUser }) => {
           name="username"
           value={formData.username}
           onChange={handleChange}
+          required
         />
-          <div class="error ItemLevel show" 
+          {/* <div class="error ItemLevel show" 
             role="alert" 
-            style={{fontSize: 12, color: "red"}}>{error.usernameError}</div>
+            style={{fontSize: 12, color: "red"}}>{error.usernameError}</div> */}
 
-        
+        <br/>
         <label style={{fontWeight: 'bold'}} htmlFor="password" >Password</label>
         <br/>
         <input
@@ -105,13 +103,15 @@ const LoginForm = ({setUser }) => {
           name="password"
           value={formData.password}
           onChange={handleChange}
+          required
         />
-          <div 
+          {/* <div 
             role="alert" 
-            style={{fontSize: 12, color: "red" }}>{error.passwordError}</div>
+            style={{fontSize: 12, color: "red" }}>{error.passwordError}</div> */}
 
         <br/>
-        <button class="btn btn-secondary" type="submit">Login</button>
+        <br/>
+        <button class="btn btn-secondary" type="submit">Sign In</button>
       </form>
 
       <hr class="solid"/>
@@ -123,7 +123,7 @@ const LoginForm = ({setUser }) => {
       </div>
       <br/>
     
-    </div>
+    </section>
   );
 };
 

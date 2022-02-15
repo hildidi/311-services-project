@@ -64,11 +64,12 @@ const ComplaintForm = ({ complaints, setComplaints }) => {
                     .then(r=>r.json())
                     .then(console.log)
 
-                    // setComplaints([...complaints, newComplaint ])
-                    updateTitleDetails([complaints, newComplaint ])
-                    updateDescDetails("")
-                    updateDate_ObservedDetails("")
-                    setCategoryDetails(0)
+                    setComplaints([complaints, newComplaint ]);
+                    // updateTitleDetails([complaints, newComplaint ]);
+                    updateTitleDetails("");
+                    updateDescDetails("");
+                    updateDate_ObservedDetails("");
+                    setCategoryDetails(0);
                     }}>
 
                 <label htmlFor="complaint-title" style={{fontWeight: 'bold'}}>Title</label>

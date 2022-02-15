@@ -38,8 +38,8 @@ function NavBar ({user, setUser}) {
                   ) : (
                     <>
                       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <Link class="btn btn-outline-secondary my-2 my-sm-0 text-dark" to="/login">Login</Link> &nbsp;
-                        <Link class="btn btn-outline-secondary my-2 my-sm-0 text-dark" to="/signup">Signup</Link>
+                        <Link class="btn btn-outline-secondary my-2 my-sm-0 text-dark" to="/login">Sign In</Link> &nbsp;
+                        <Link class="btn btn-outline-secondary my-2 my-sm-0 text-dark" to="/signup">Sign Up</Link>
                       </ul>
                     </>
                   )}

@@ -7,9 +7,9 @@ function SignupForm ({setUser}) {
     username: "",
     email: "",
     password: "",
-    usernameError: "",
-    emailError: "",
-    passwordError: ""
+    // usernameError: "",
+    // emailError: "",
+    // passwordError: ""
   });
 
   const navigate=useNavigate();
@@ -22,35 +22,35 @@ function SignupForm ({setUser}) {
   };
 
  
-  const validate =  () => {
-    let usernameError = "";
-    let emailError = "";
-    let passwordError = "";
+  // const validate =  () => {
+  //   let usernameError = "";
+  //   let emailError = "";
+  //   let passwordError = "";
 
-    if (!formData.username) {
-      usernameError = "Name cannot be blank.";
-    }
+  //   if (!formData.username) {
+  //     usernameError = "Name cannot be blank.";
+  //   }
 
-    if (!formData.email.includes('@')){
-      emailError = "Please enter a valid email address."
-    }
+  //   if (!formData.email.includes('@')){
+  //     emailError = "Please enter a valid email address."
+  //   }
 
-    if (formData.password < 4) {
-      passwordError = "Password must be longer than 4 characters.";
-    }
+  //   if (formData.password < 4) {
+  //     passwordError = "Password must be longer than 4 characters.";
+  //   }
 
-    if (usernameError || emailError || passwordError ) {
-      setFormData({usernameError, emailError, passwordError });
-      return false;
-    }
+  //   if (usernameError || emailError || passwordError ) {
+  //     setFormData({usernameError, emailError, passwordError });
+  //     return false;
+  //   }
 
-  }; 
+  // }; 
 
   function handleSubmit(e) {
     e.preventDefault();
-   
-     const isValid = validate();
-     if (isValid) {}
+  
+    //  const isValid = validate();
+    //  if (isValid) {}
    
 
     const userCredentials = { ...formData };
@@ -91,9 +91,10 @@ function SignupForm ({setUser}) {
           name="username"
           value={formData.username}
           onChange={handleChange}
+          required
         />
-        <div style={{fontSize: 12, color: "red"}}>{formData.usernameError}</div>
-        
+        {/* <div style={{fontSize: 12, color: "red"}}>{formData.usernameError}</div> */}
+        <br/>
         <label htmlFor="email" style={{fontWeight: 'bold'}}>Email: </label>
         <br/>
         <input
@@ -103,10 +104,11 @@ function SignupForm ({setUser}) {
           name="email"
           value={formData.email}
           onChange={handleChange}
+          required
         />
 
-         <div style={{fontSize: 12, color: "red"}}>{formData.emailError}</div>
-
+         {/* <div style={{fontSize: 12, color: "red"}}>{formData.emailError}</div> */}
+         <br/>
         <label htmlFor="password" style={{fontWeight: 'bold'}}>Password: </label>
         <br/>
         <input
@@ -115,10 +117,12 @@ function SignupForm ({setUser}) {
           name="password"
           value={formData.password}
           onChange={handleChange}
+          required
         />
-        <div style={{fontSize: 12, color: "red"}}>{formData.passwordError}</div>
+        {/* <div style={{fontSize: 12, color: "red"}}>{formData.passwordError}</div> */}
         
         <br />
+        <br/>
         <button class="btn btn-secondary" type="submit">Create</button>    
          
         <hr class="solid"/>
@@ -128,7 +132,7 @@ function SignupForm ({setUser}) {
         <Link to="/login" replace>
           Log in
         </Link>
-      </div>
+        </div>
         <br/>
       </div>
       

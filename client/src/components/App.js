@@ -19,7 +19,7 @@ function App(){
   const [user, setUser] = useState(null);
   const [authenticated, setAuthenticated ] = useState(false); 
     console.log("authenticated ", authenticated)
-  const [ complaints, setComplaints ] = useState([]);
+  const [ complaints, setComplaints ] = useState([]); 
 
   //  GET complaints
     // useEffect( ()=> {   
@@ -35,7 +35,7 @@ function App(){
     fetch('/user_complaints')
     .then(r => r.json() )
     .then( 
-      (complaintsFetchedData) => { 
+      (complaintsFetchedData) => { console.log("fetchedData", complaintsFetchedData)
       setComplaints(complaintsFetchedData)
       }
     )
@@ -97,7 +97,7 @@ function App(){
           <Routes>
             <Route path="/login" element={<LoginForm setUser={setUser} />}/>
             <Route path="/signup" element={<SignupForm setUser={setUser} />}/>
-            <Route path="/complaints/new" element={<ComplaintForm/>} />
+            <Route path="/complaints/new" element={<ComplaintForm setComplaints={setComplaints }/>} />
             <Route path="/complaints" element={<AllComplaintsList complaints={complaints} handleDeleteComplaint={handleDeleteComplaint}/>}/>
             <Route path="/complaints/edit" element={<ModifyComplaintForm complaints={complaints} handleUpdateComplaint={handleUpdateComplaint}/>}/>
             <Route path ="/" element= {user ? (<Login setUser={setUser} user={user} />):(<> <Logout setUser={setUser} /></>) } />            
