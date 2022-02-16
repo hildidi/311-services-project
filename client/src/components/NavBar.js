@@ -23,23 +23,23 @@ function NavBar ({user, setUser}) {
                 <img src="https://www1.nyc.gov/assets/home/images/global/ico-311-51x51.png" alt="311 logo of a yellow box with a black outline and the words N Y C 311 written in the center."/> &nbsp;
                 {/* <div class="slogan">The Official Website of the City of New York</div> */}
                 {/* <div class="slogan">The Official Website of the City of New York </div>  */}
-                <Link class="navbar-brand text-dark " to="/">Home </Link> 
+                <Link class="navbar-brand text-dark " to="/" style={{fontWeight: "bold"}}>Home </Link> 
               </li>               
             </ul>
             
             <div class="form-inline my-2 my-lg-0">  
                 {user ? (
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <Link class="nav-link text-dark" onSubmit={(e)=>e.preventDefault()} to="/complaints/new">New Complaint</Link>
-                        <Link class="nav-link text-dark" to="/complaints/">My Complaints Report</Link>
-                        < button class="btn btn-outline-secondary my-2 my-sm-0 text-dark" onClick={handleLogOut}>Logout</button>
+                        <Link class="nav-link text-dark" onSubmit={(e)=>e.preventDefault()} to="/complaints/new" style={{fontWeight: "bold"}}>New Complaint</Link>
+                        <Link class="nav-link text-dark" to="/complaints/" style={{fontWeight: "bold"}}>My Complaints Report</Link>
+                        < button class="btn btn-outline-secondary my-2 my-sm-0 text-dark" onClick={handleLogOut} style={{fontWeight: "bold"}}>Logout</button>
                     </ul>
                   
                   ) : (
                     <>
                       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <Link class="btn btn-outline-secondary my-2 my-sm-0 text-dark" to="/login">Sign In</Link> &nbsp;
-                        <Link class="btn btn-outline-secondary my-2 my-sm-0 text-dark" to="/signup">Sign Up</Link>
+                        <Link class="btn btn-outline bg-dark my-2 my-sm-0 text-white" to="/login">Sign In</Link> &nbsp;
+                        <Link class="btn btn-outline bg-dark my-2 my-sm-0 text-white" to="/signup">Sign Up</Link>
                       </ul>
                     </>
                   )}

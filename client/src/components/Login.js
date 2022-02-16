@@ -1,27 +1,24 @@
 import { useEffect } from "react";
-// import { Navigate } from "react-router";
 
 function Login ({ user}) { 
   useEffect(()=>{
     
-    // <Navigate to="/"/>
   }, [])
   
   return ( 
-    
-    <div class="container bg-dark">
-      <div class="container text-white">
-        <h2 class="text-white ">Welcome, {user.username}!</h2>  
-        <p>We are here to provide the public with quick, easy access to all New York City government services and information while offering the best customer service.</p> 
-        <p>To report non-emergency, city-related issues handled by NYC city public agencies, please submit a complaint via our New Complaint form once you are logged in. </p> 
-      </div>
-
+    <div class="categories-grid-container">
+    <div class="container bg-transparent">
 
        <div id="categories-grid">
           <div class="container">
     {/* <!--<h2>Categories</h2>--> */}
           <div class="row">
-            
+              <div class="container text-white"><br/>
+                <h2 class="text-white ">Welcome, {user.username}!</h2>  
+                <p style={{fontSize: "14pt" }}>NYC 311 provides the public with quick, easy access to all New York City government services and information while offering the best customer service.</p> 
+                <p style={{fontSize: "14pt" }}>To report non-emergency, city-related issues handled by NYC city public agencies, please submit a complaint via our New Complaint form. </p> 
+              </div>
+
                 <div class="col-md-3 col-xs-12 col-sm-12 mb-3">
                   <a href="https://portal.311.nyc.gov/kacategory/?id=311-121">
                     <div class="card" >
@@ -299,117 +296,10 @@ function Login ({ user}) {
       --> */}
   </div>
 </div>
-        
+</div>  
 </div>
   
   );
 };
 
 export default Login; 
-
-
-
-
-
-{/* <div id="top-requests-footer">
-      <div class="container">
-        <h2 class="text-white">Most Popular</h2>
-          <div class="row">
-
-            <ul>
-              <li>
-                <a class="sideLink" href="https://portal.311.nyc.gov/article/?kanumber=KA-03360">
-                  Coronavirus (COVID-19) Vaccine
-                </a>
-              </li>
-
-              <li>
-                <a class="sideLink" href="https://portal.311.nyc.gov/article/?kanumber=KA-03322">
-                Coronavirus (COVID-19) Testing
-                </a>
-              </li>
-
-              <li>
-                <a class="sideLink" href="https://portal.311.nyc.gov/article/?kanumber=KA-03254">
-                  Find a Doctor
-                </a>
-
-              </li>
-              <a class="sideLink" href="https://portal.311.nyc.gov/article/?kanumber=KA-03386">
-                Coronavirus (COVID-19) Vaccination Record
-              </a>
-
-              <li>          
-                <a class="sideLink" href="https://portal.311.nyc.gov/article/?kanumber=KA-01011">
-                  Alternate Side Parking and Street Cleaning
-                </a>
-              </li>
-
-              <li>
-                <a class="sideLink" href="https://portal.311.nyc.gov/article/?kanumber=KA-03467">
-                  Free At-Home COVID Test and KN95 Mask Distribution
-                </a>
-              </li>
-          
-              <li>
-                <a class="sideLink" href="https://portal.311.nyc.gov/article/?kanumber=KA-01036">
-                Heat or Hot Water Complaint in a Residential Building
-                </a>
-              </li>
-            
-              <li>
-                <a class="sideLink" href="https://portal.311.nyc.gov/article/?kanumber=KA-01018">
-                SNAP (Food Stamps)
-                </a>
-              </li>
-
-              <li>
-                <a class="sideLink" href="https://portal.311.nyc.gov/article/?kanumber=KA-01969">
-                Bulk Item Disposal
-                </a> 
-              </li>
-          
-              <li>
-                <a class="sideLink" href="https://portal.311.nyc.gov/article/?kanumber=KA-01074">
-                Apartment Maintenance Complaint
-                </a>
-              </li>
-
-              <li>
-                <a class="sideLink" href="https://portal.311.nyc.gov/article/?kanumber=KA-01012">
-                Birth Certificate Order
-                </a>
-              </li>
-          
-              <li>
-                <a class="sideLink" href="https://portal.311.nyc.gov/article/?kanumber=KA-02522">
-                School Calendar and Closures
-                </a>
-              </li>
-            
-              <li>
-                <a class="sideLink" href="https://portal.311.nyc.gov/article/?kanumber=KA-01017">
-                Noise from Neighbor
-                </a>
-              </li>
-
-              <li>
-                <a class="sideLink" href="https://portal.311.nyc.gov/article/?kanumber=KA-01986">
-                Illegal Parking
-                </a>
-              </li>
-          
-              <a class="sideLink" href="https://portal.311.nyc.gov/article/?kanumber=KA-02340">
-                Electronic Benefit Transfer (EBT) Card
-              </a>
-            
-              <li>
-                <a class="sideLink" href="https://portal.311.nyc.gov/article/?kanumber=KA-03288">
-                Coronavirus (COVID-19) Health and Safety
-                </a>
-              </li>
-
-            </ul>
-          </div>
-        </div>
-    </div> */}

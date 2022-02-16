@@ -90,7 +90,7 @@ function ModifyComplaintForm ( {complaintsObj, show, handleClose} ) {
                 <div className="card-body bg-header">
                     <form>
                         <div className="mb-3">
-                            <label className="form-label" style={{fontWeight: 'bold'}}>Title</label>
+                            <label className="form-label" style={{fontWeight: 'bold'}}>Title:</label>
                             <input
                                 name="title" type="title" className="form-control" placeholder="Title"
                                 value={title}
@@ -120,7 +120,7 @@ function ModifyComplaintForm ( {complaintsObj, show, handleClose} ) {
                         </div>
 
                         <div className="mb-3">
-                            <label className="form-label" style={{fontWeight: 'bold'}}>Description</label>
+                            <label className="form-label">Description:</label>
                             <textarea
                                 name="desc" className="form-control" rows="3" placeholder="desc"
                                 value={desc}
@@ -131,7 +131,7 @@ function ModifyComplaintForm ( {complaintsObj, show, handleClose} ) {
                         </div>
 
                         <div className="mb-3">
-                            <label className="form-label" style={{fontWeight: 'bold'}}>Date Observed</label>
+                            <label className="form-label">Date Observed:</label>
                             <input
                                 type= "date" className="form-control" placeholder="Title"
                                 value={date_observed}

@@ -2,8 +2,9 @@ import React, {useState } from "react";
 import ModifyComplaintForm from "./ModifyComplaintForm";
 
 function ComplaintCard ( {complaintsObj, deleteComplaintRequest } ) { 
+  console.log('complOBJ')
   const [show, setShow] = useState(false);
-
+  
   const handleOpenClose = () => {
       setShow(!show);
   };
@@ -12,12 +13,10 @@ function ComplaintCard ( {complaintsObj, deleteComplaintRequest } ) {
   };
  
   return (
-
     <div className="card-m2"
       onClick={(e) => {
         e.stopPropagation();  
-    }}
->
+    }}>
       
     <div class="card">
         <div class="card-body">
@@ -44,6 +43,7 @@ function ComplaintCard ( {complaintsObj, deleteComplaintRequest } ) {
           complaintsObj={complaintsObj}
           show={show}
           handleClose={handleClose}/>
+       
     )}    
 </div>
 

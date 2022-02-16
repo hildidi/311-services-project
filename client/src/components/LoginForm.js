@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 
-const LoginForm = ({setUser }) => {
+const LoginForm = ({setUser }) => { 
+
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
@@ -43,8 +44,9 @@ const LoginForm = ({setUser }) => {
     e.preventDefault();
     // const isValid = validate();
     // if (isValid) {}
-
     const userCreds = { ...formData }; console.log('userCreds', userCreds)
+
+
     fetch("/login", {
       method: "POST",
       headers: {
@@ -77,10 +79,10 @@ const LoginForm = ({setUser }) => {
 
   return (
     
-    <section class="intro card container" role="form"><br></br>
-      <h2>Sign in with your existing account.</h2>
+    <section class="container" role="form"><br></br>
+      <h2 class="text-white">Sign in with your existing account.</h2>
       <form onSubmit={handleSubmit}>
-        <label style={{fontWeight: 'bold'}} htmlFor="username">Username</label>
+        <label class="text-white" style={{fontWeight: 'bold'}} htmlFor="username">Username:</label>
         <br/>
         <input
           id="username-input"
@@ -95,7 +97,7 @@ const LoginForm = ({setUser }) => {
             style={{fontSize: 12, color: "red"}}>{error.usernameError}</div> */}
 
         <br/>
-        <label style={{fontWeight: 'bold'}} htmlFor="password" >Password</label>
+        <label class="text-white" style={{fontWeight: 'bold'}} htmlFor="password" >Password:</label>
         <br/>
         <input
           id="password-input"
@@ -111,13 +113,13 @@ const LoginForm = ({setUser }) => {
 
         <br/>
         <br/>
-        <button class="btn btn-secondary" type="submit">Sign In</button>
+        <button class="btn btn-secondary bg-dark text-white" type="submit">Sign In</button>
       </form>
 
-      <hr class="solid"/>
+      <hr class="solid text-white"/>
 
       <div>
-        <Link to="/signup" replace>
+        <Link to="/signup" replace class="text-white"> 
           Sign up now
         </Link>
       </div>

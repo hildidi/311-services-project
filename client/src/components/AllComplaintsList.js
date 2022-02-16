@@ -3,10 +3,11 @@ import ComplaintCard from "./ComplaintCard";
 
 function AllComplaintList( { complaints, handleDeleteComplaint, handleUpdateComplaint } ) { 
 
+
   return (
-    <div className="container"><br></br>
-        <h2 class="text-white">All My Reported Complaints</h2> 
-        <div class="card-body">
+    <div class="container" style={{width: '50rem'}}><br></br>
+        <h2 class="text-white text-center">All My Reported Complaints</h2> 
+        <div class="card-body text-center" >
           {complaints.map(
               (eachComplaint) => {
                     return (  

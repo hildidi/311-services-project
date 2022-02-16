@@ -20,7 +20,6 @@ function SignupForm ({setUser}) {
       [e.target.name]: e.target.value,
     });
   };
-
  
   // const validate =  () => {
   //   let usernameError = "";
@@ -79,11 +78,11 @@ function SignupForm ({setUser}) {
 
   return (
     <>
-    <div class="intro card container"><br></br>
+    <div class="container"><br></br>
       <form onSubmit={handleSubmit} className="complaint-block">
-        <h2>Sign up form</h2>
-        <p>Fill out the text fields, and then select the Create button.</p>
-        <label htmlFor="username" style={{fontWeight: 'bold'}}>Username: </label>
+        <h2 class="text-white">Sign up form</h2>
+        <p class="text-white"> Fill out the text fields, and then select the Create button.</p>
+        <label class="text-white" htmlFor="username" style={{fontWeight: 'bold'}}>Username: </label>
         <br/>
         <input
           id="username-signup-input"
@@ -95,7 +94,7 @@ function SignupForm ({setUser}) {
         />
         {/* <div style={{fontSize: 12, color: "red"}}>{formData.usernameError}</div> */}
         <br/>
-        <label htmlFor="email" style={{fontWeight: 'bold'}}>Email: </label>
+        <label class="text-white" htmlFor="email" style={{fontWeight: 'bold'}}>Email: </label>
         <br/>
         <input
           id="email-signup-input"
@@ -109,7 +108,7 @@ function SignupForm ({setUser}) {
 
          {/* <div style={{fontSize: 12, color: "red"}}>{formData.emailError}</div> */}
          <br/>
-        <label htmlFor="password" style={{fontWeight: 'bold'}}>Password: </label>
+        <label htmlFor="password" style={{fontWeight: 'bold'}} class="text-white">Password: </label>
         <br/>
         <input
           id="password-signup-input"
@@ -123,13 +122,13 @@ function SignupForm ({setUser}) {
         
         <br />
         <br/>
-        <button class="btn btn-secondary" type="submit">Create</button>    
+        <button class="btn btn-secondary bg-dark" type="submit">Create</button>    
          
-        <hr class="solid"/>
+        <hr class="solid text-white"/>
       </form>
 
       <div>
-        <Link to="/login" replace>
+        <Link to="/login" replace class="text-white">
           Log in
         </Link>
         </div>
