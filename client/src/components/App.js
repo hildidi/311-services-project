@@ -10,6 +10,8 @@ import AllComplaintsList from "./AllComplaintsList";
 import ComplaintForm from "./ComplaintForm.js";
 
 import Banner from "../layout/Banner";
+import Header from '../layout/Header';
+import Home from './Home';
 import NavBar from "./NavBar";
 import Footer from "../layout/Footer";
 
@@ -24,12 +26,12 @@ function App(){
     fetch('/user_complaints')
     .then(r => r.json() )
     .then( 
-      (complaintsFetchedData) => { console.log("fetchedData", complaintsFetchedData)
-      setComplaints(complaintsFetchedData)
-      
+      (complaintsFetchedData) => { 
+      setComplaints(complaintsFetchedData);    
+      console.log("fetchedData", complaintsFetchedData)
       }
     )
-
+    
     fetch("/me", {
       credentials: "include",
     }).then((res) => {
@@ -72,8 +74,10 @@ function App(){
         <BrowserRouter>
         <Banner/> 
         <NavBar user={user} setUser={setUser} />
+        {/* <Home user={user}/> */}
           <Routes>
-            <Route path="/login" element={<LoginForm setUser={setUser} />}/>
+            <Route path="/" element={<Home user={user}/>}/>
+            <Route path="/login" element={<LoginForm setUser={setUser}/>}/>
             <Route path="/signup" element={<SignupForm setUser={setUser} />}/>
             <Route path="/complaints/new" element={<ComplaintForm complaints={complaints} setComplaints={setComplaints }/>} />
             <Route path="/complaints" element={<AllComplaintsList complaints={complaints} handleDeleteComplaint={handleDeleteComplaint}/>}/>

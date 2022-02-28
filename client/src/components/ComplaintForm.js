@@ -8,6 +8,9 @@ const ComplaintForm = ({ complaints, setComplaints }) => { console.log("THE COMp
     const [categoryDetails , setCategoryDetails] = useState("");
     const [allCategories , setAllCategories] = useState([]); 
 
+    const [openSubmitModal, setOpenSubmitModal] = useState(false)
+
+
     useEffect( ()=> {   
     fetch('/categories')
     .then( r => r.json() )
@@ -21,11 +24,13 @@ const ComplaintForm = ({ complaints, setComplaints }) => { console.log("THE COMp
     function renderCatDropDown (){
         return (
             <>
-             <select onChange={
+             <select aria-required="true" required="required"
+              onChange={
                     (se) => {
                         // console.log("se...", se.target)}}>
-                        setCategoryDetails(se.target.value)}}>
-                        <option option value={0} > Category </option>                         
+                        setCategoryDetails(se.target.value)}}> 
+                        {/* <option option value={0} > Category </option>                          */}
+                        <option value="">None</option>
                         {allCategories.map(eachCategory =>{
                         return (
                             <option value={eachCategory.category} > {eachCategory.category}</option>)
@@ -39,122 +44,102 @@ const ComplaintForm = ({ complaints, setComplaints }) => { console.log("THE COMp
         <section class='container' style={{width: '35rem'}}><br></br>           
             <h2 id="complaint" class="text-white">Submit a Complaint</h2>
             <div className="form-complaint">
-            
-            <form class="form-group"
-                onSubmit={
-                    (se)=>{
-                        se.preventDefault()
-                        const newComplaint = {
-                            title: titleDetails,
-                            desc: descDetails,
-                            date_observed: date_observedDetails,
-                            category_name: categoryDetails
-                        }
-                        fetch ('/complaints/new', {
-                            method: 'POST', 
-                        headers:{
-                            'Content-Type': 'application/json',
-                        },                    
-                        body: JSON.stringify(newComplaint)}
-                        )
-                        .then(r=>r.json())
-                        .then(console.log)
-                        
-                        console.log("complaints", [complaints, newComplaint])
-                        console.log("complaints", [...complaints, newComplaint])
-                        setComplaints([...complaints, newComplaint]);
-                        // updateTitleDetails([...complaints, newComplaint ]);
-                        updateTitleDetails("");
-                        updateDescDetails("");
-                        updateDate_ObservedDetails("");
-                        setCategoryDetails(0);
-                    }}>
-
-                <label htmlFor="complaint-title" style={{fontWeight: 'bold'}} class="text-white">Title:</label>
-                <input 
-                    type="text" 
-                    class="form-control" 
-                    id="complaint-title" 
-                    placeholder="Title" 
-                    required
-                    onChange={
+                <form class="form-group"
+                    onSubmit={
                         (se)=>{
-                            // console.log('synth', se.target.value)
-                            updateTitleDetails(se.target.value)}}
-                            value={titleDetails} 
-                            placeholder ="Title details"/>
-                <br />
+                            se.preventDefault()
+                            const newComplaint = {
+                                title: titleDetails,
+                                desc: descDetails,
+                                date_observed: date_observedDetails,
+                                category_name: categoryDetails
+                            }
+                            fetch ('/complaints/new', {
+                                method: 'POST', 
+                            headers:{
+                                'Content-Type': 'application/json',
+                            },                    
+                            body: JSON.stringify(newComplaint)}
+                            )
+                            .then(r=>r.json())
+                            .then(console.log)
+                            
+                            console.log("complaints", [complaints, newComplaint])
+                            console.log("complaints", [...complaints, newComplaint])
+                            setComplaints([...complaints, newComplaint]);
+                            // updateTitleDetails([...complaints, newComplaint ]);
+                            updateTitleDetails("");
+                            updateDescDetails("");
+                            updateDate_ObservedDetails("");
+                            setCategoryDetails(0);
+                        }}>
 
-                <label htmlFor="select-cat" style={{fontWeight: 'bold'}} class="text-white"> Select Complaint Category:</label> &nbsp;                           
-                {renderCatDropDown ( )}
-                
-                <br />
-                <br />
-                <label htmlFor="formControlTextarea1" style={{fontWeight: 'bold'}} class="text-white"> Describe the Problem:</label>
-                <textarea 
-                    class="form-control" 
-                    id="exampleFormControlTextarea1" 
-                    rows="3"
-                    placeholder="Enter complaint details"
-                    required
-                    onChange={
-                        (se)=>{
-                            // console.log('synth', se.target.value)
-                            updateDescDetails(se.target.value)}}
-                            value={descDetails}
-                            placeholder = "Description details"/>
+                    <label HTMLFor="complaint-title" style={{fontWeight: 'bold'}} class="text-white">Title (required)</label> 
+                    <input 
+                        // type="text" 
+                        class="form-control" 
+                        id="complaint-title" 
+                        placeholder ="Enter a title"
+                        aria-required="true"
+                        required="required"
+                        onChange={
+                            (se)=>{
+                                // console.log('synth', se.target.value)
+                                updateTitleDetails(se.target.value)}}
+                                value={titleDetails} 
+                                /> 
+                    
+                    <br/>
+                    <label for="select-category" style={{fontWeight: 'bold'}} class="text-white"> Select Complaint Category (required) </label> &nbsp;                           
+                    {renderCatDropDown ( )} 
+                    
+                    <br />
+                    <br />
+                    <label htmlFor="formControlTextarea1" style={{fontWeight: 'bold'}} class="text-white"> Describe the Problem (required)</label>
+                    <textarea 
+                        class="form-control" 
+                        id="exampleFormControlTextarea1" 
+                        rows="3"
+                        placeholder="Enter complaint details"
+                        required="required"
+                        aria-required="true"
+                        onChange={
+                            (se)=>{
+                                // console.log('synth', se.target.value)
+                                updateDescDetails(se.target.value)}}
+                                value={descDetails}/>
                     <br />
 
-            <div class="form-group">
-                <label htmlFor="formControlInput1" style={{fontWeight: 'bold'}} class="text-white"> Date Observed:</label>
-                <input 
-                    type="date"
-                    class="form-control" 
-                    id="exampleFormControlInput1" 
-                    required
-                    onChange={
-                        (se)=>{
-                            // console.log('synth', se.target.value)
-                            updateDate_ObservedDetails(se.target.value)}}
-                            value={date_observedDetails}
-                            placeholder ="Date details"
-                            />
-            </div>
+                    <div class="form">
+                        <label HTMLFor="date" style={{fontWeight: 'bold'}} class="text-white"> Date Observed (required)</label>
+                        <input 
+                            type="date"
+                            // data-date-format="M/D/YYYY"
+                            class="form-control" 
+                            id="date" 
+                            aria-required="true"
+                            required="required"
+                            onChange={
+                                (se)=>{
+                                    // console.log('synth', se.target.value)
+                                    updateDate_ObservedDetails(se.target.value)}}
+                                    value={date_observedDetails}
+                                    />
+                    </div>
 
-            <br/>
-            {/* For address */}
-            {/* <label htmlFor="complaint-title" style={{fontWeight: 'bold'}} class="text-white">Address</label>
-                <input 
-                type="text" 
-                class="address-picker-input form-control text" 
-                disabled="disabled"
-                onChange={
-                    (se)=>{
-                        // console.log('synth', se.target.value)
-                        updateTitleDetails(se.target.value)}}
-                        value={""} />
-                        <div class="input-group-btn">
-                        <button 
-                        class="btn bg-black" 
-                        id="SelectAddressWhere" 
-                        name="Select-Address-Where-Section"
-                        disabled="disabled">
-                        <span class ="text-white">Select Address</span></button></div>
-                    <br /> */}
-                    
-                {/* For address */}
 
-            
-            <button 
-                class="btn bg-dark my-2 my-sm-100 text-white"
-                type="submit" 
-                id="sbt-btn">Submit Complaint</button> &nbsp;
+                    <br />
+                    <button 
+                        class="btn bg-dark my-2 my-sm-100 text-white"
+                        type="submit" 
+                        id="sbt-btn">Submit Complaint</button> &nbsp;
 
-                <Link class="btn bg-dark my-2 my-sm-100 text-white" 
-                type="submit"
-                to="/complaints/" >View All Complaints</Link>
-            </form>
-            <br/>
+                        <Link class="btn bg-dark my-2 my-sm-100 text-white" 
+                        type="submit"
+                        to="/complaints/" >View All Complaints</Link>
+                </form>
+                
+                <br/>
 
             </div>
     
