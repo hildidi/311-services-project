@@ -10,7 +10,6 @@ import AllComplaintsList from "./AllComplaintsList";
 import ComplaintForm from "./ComplaintForm.js";
 
 import Banner from "../layout/Banner";
-import Header from '../layout/Header';
 import Home from './Home';
 import NavBar from "./NavBar";
 import Footer from "../layout/Footer";
@@ -19,7 +18,6 @@ function App(){
 
   const [user, setUser] = useState(null);
   const [authenticated, setAuthenticated ] = useState(false); 
-    // console.log("authenticated ", authenticated)
   const [ complaints, setComplaints ] = useState([]); 
 
   useEffect( ()=> {   
@@ -74,7 +72,6 @@ function App(){
         <BrowserRouter>
         <Banner/> 
         <NavBar user={user} setUser={setUser} />
-        {/* <Home user={user}/> */}
           <Routes>
             <Route path="/" element={<Home user={user}/>}/>
             <Route path="/login" element={<LoginForm setUser={setUser}/>}/>

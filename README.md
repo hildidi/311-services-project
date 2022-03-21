@@ -1,9 +1,14 @@
-# Project Template: React/Rails API
+# Complaints System 311
 
 ## Description
 
-This project is scaffolded so that you can build a React frontend and Rails
-backend together, and easily deploy them to Heroku.
+Non-emergency issues reporting system allowing City residents to submit complaints about potholes, broken sidewalks and issues of this nature handled by public agencies in NYC.
+
+## Built With
+
+- [React.js](https://reactjs.org) 
+- [Ruby on Rails](https://rubyonrails.org/)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 ## Requirements
 

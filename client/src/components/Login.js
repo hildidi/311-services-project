@@ -8,7 +8,6 @@ function Login ({ user}) {
   return ( 
     <div class="categories-grid-container">
     <div class="container bg-transparent">
-
        <div id="categories-grid">
           <div class="container">
               <div class="container text-white"><br/>

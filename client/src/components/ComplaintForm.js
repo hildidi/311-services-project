@@ -76,7 +76,6 @@ const ComplaintForm = ({ complaints, setComplaints }) => { console.log("THE COMp
 
                     <label HTMLFor="complaint-title" style={{fontWeight: 'bold'}} class="text-white">Title (required)</label> 
                     <input 
-                        // type="text" 
                         class="form-control" 
                         id="complaint-title" 
                         placeholder ="Enter a title"
@@ -114,7 +113,6 @@ const ComplaintForm = ({ complaints, setComplaints }) => { console.log("THE COMp
                         <label HTMLFor="date" style={{fontWeight: 'bold'}} class="text-white"> Date Observed (required)</label>
                         <input 
                             type="date"
-                            // data-date-format="M/D/YYYY"
                             class="form-control" 
                             id="date" 
                             aria-required="true"

@@ -11,10 +11,6 @@ const LoginForm = ({setUser }) => {
     password: ""
   });
 
-  // const [error, setError] = useState ({
-  //   usernameError: "",
-  //   passwordError: ""
-  // })
   
   const handleChange = (e) => {
     setFormData({
@@ -93,9 +89,6 @@ const LoginForm = ({setUser }) => {
           onChange={handleChange}
           required
         />
-          {/* <div class="error ItemLevel show" 
-            role="alert" 
-            style={{fontSize: 12, color: "red"}}>{error.usernameError}</div> */}
 
         <br/>
         <label class="text-white" style={{fontWeight: 'bold'}} htmlFor="password" >Password:</label>
@@ -108,9 +101,6 @@ const LoginForm = ({setUser }) => {
           onChange={handleChange}
           required
         />
-          {/* <div 
-            role="alert" 
-            style={{fontSize: 12, color: "red" }}>{error.passwordError}</div> */}
 
         <br/>
         <br/>

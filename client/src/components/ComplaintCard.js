@@ -30,16 +30,16 @@ function ComplaintCard ( {complaintsObj, deleteComplaintRequest } ) {
             <p class="card-text">{complaintsObj.date_observed}</p>
 
                                
-        <button class="btn bg-dark mb-3 text-white"
-            onClick={(e)=> {
-              e.stopPropagation();
-              // deleteComplaintRequest(complaintsObj.id)} }>Delete</button>&nbsp;
-              setOpenModal(true)} }>Delete</button>&nbsp;
         {
           <button class="btn bg-dark mb-3 text-white"
           onClick={handleOpenClose}
-          >Edit</button>}
+          >Edit</button>}&nbsp;
 
+          <button class="btn bg-dark mb-3 text-white"
+              onClick={(e)=> {
+                e.stopPropagation();
+                // deleteComplaintRequest(complaintsObj.id)} }>Delete</button>&nbsp;
+                setOpenModal(true)} }>Delete</button>
         
        </div>
     </div>

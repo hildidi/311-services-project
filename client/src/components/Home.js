@@ -10,9 +10,9 @@ function Home({user}) {
     {/* <!--<h2>Categories</h2>--> */}
           <div class="row">
               <div class="container text-white"><br/>
-                {/* <h2 class="text-white ">Welcome, {user.username}!</h2>   */}
+               
                 <p style={{fontSize: "14pt" }}>NYC 311 provides the public with quick, easy access to all New York City government services and information while offering the best customer service.</p> 
-                <p style={{fontSize: "14pt" }}>To report non-emergency, city-related issues handled by NYC city public agencies, please submit a complaint via our New Complaint form. </p> 
+                <p style={{fontSize: "14pt" }}>To report non-emergency, city-related issues handled by NYC public agencies, sign in or sign up to submit a complaint using the New Complaint form. </p> 
               </div>
 
                 <div class="col-md-3 col-xs-12 col-sm-12 mb-3">
