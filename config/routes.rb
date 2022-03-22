@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :locations
   resources :users, only: [:create, :show]
   
-  #endoints:x
+  #endoints:
   get "/user_complaints", to: "complaints#display_user_complaints"
   get "/me", to: "users#show"
 
